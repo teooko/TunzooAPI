@@ -1,0 +1,6 @@
+@TunzooAPI_HostAddress = http://localhost:5192
+
+GET {{TunzooAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
