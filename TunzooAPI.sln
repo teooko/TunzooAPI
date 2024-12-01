@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunzooAPI", "TunzooAPI\TunzooAPI.csproj", "{82D725F6-F166-417C-AC26-72B2AA57F1A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunzooApi.Domain", "TunzooApi.Domain\TunzooApi.Domain.csproj", "{4EE8FD38-0D3E-430B-B3A9-35119351F3F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{82D725F6-F166-417C-AC26-72B2AA57F1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82D725F6-F166-417C-AC26-72B2AA57F1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82D725F6-F166-417C-AC26-72B2AA57F1A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE8FD38-0D3E-430B-B3A9-35119351F3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE8FD38-0D3E-430B-B3A9-35119351F3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE8FD38-0D3E-430B-B3A9-35119351F3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE8FD38-0D3E-430B-B3A9-35119351F3F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
