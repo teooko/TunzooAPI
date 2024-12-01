@@ -1,4 +1,5 @@
 using SignalRChat.Hubs;
+using TunzooApi.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MapGet("/lobby", () =>
+{
+    var lobby = new Lobby();
+    return Results.Ok(lobby.LobbyId);
+});
 app.UseHttpsRedirection();
 app.MapHub<ChatHub>("/chatHub");
 
