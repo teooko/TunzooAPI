@@ -18,12 +18,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-/*app.MapGet("/lobby", () =>
+app.MapGet("/lobby", () =>
 {
     var lobby = new Lobby();
     return Results.Ok(lobby.LobbyId);
-});*/
+});
 app.UseHttpsRedirection();
-app.MapHub<LobbyHub>("/lobby");
+app.MapHub<LobbyHub>("/hubs/lobby");
 
 app.Run();
