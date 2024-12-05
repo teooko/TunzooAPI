@@ -10,7 +10,20 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5174") // Replace with your client URL
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -24,6 +37,9 @@ app.MapGet("/lobby", () =>
     return Results.Ok(lobby.LobbyId);
 });
 app.UseHttpsRedirection();
+
+app.UseCors();
+
 app.MapHub<LobbyHub>("/hubs/lobby");
 
 app.Run();
