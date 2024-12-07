@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TunzooApi.Domain\TunzooApi.Domain.csproj" />
+      <ProjectReference Include="..\TunzooAPI.Repository\TunzooAPI.Repository.csproj" />
     </ItemGroup>
 
 </Project>

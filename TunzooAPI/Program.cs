@@ -1,5 +1,7 @@
 using SignalRChat.Hubs;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using TunzooApi.Domain.Entities;
+using TunzooAPI.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +25,8 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-
+var rep = new Repository();
+rep.PingDatabase();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
