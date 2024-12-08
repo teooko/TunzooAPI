@@ -41,9 +41,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.MapGet("/lobby", () =>
+app.MapGet("/lobby", (RedisService redisService) =>
 {
-    var lobby = new Lobby();
+    var lobby = redisService.SetLobby();
     return Results.Ok(lobby.LobbyId);
 });
 app.UseHttpsRedirection();
