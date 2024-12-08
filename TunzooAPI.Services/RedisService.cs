@@ -10,9 +10,9 @@ public interface IRedisService
 }
 public class RedisService : IRedisService
 {
-    private readonly IConnectionMultiplexer _redis;
+    private readonly ConnectionMultiplexer _redis;
 
-    public RedisService(IConnectionMultiplexer redis)
+    public RedisService(ConnectionMultiplexer redis)
     {
         _redis = redis;
     }

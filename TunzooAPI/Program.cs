@@ -1,7 +1,9 @@
 using SignalRChat.Hubs;
+using StackExchange.Redis;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using TunzooAPI.Constants;
 using TunzooApi.Domain.Entities;
-using TunzooAPI.Repository;
+using TunzooAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
+
+builder.Services.AddSingleton<ConnectionMultiplexer>(sp =>
+{
+    var connection = ConnectionMultiplexer.Connect($"{DbConstants.HostName}:{DbConstants.PortNumber},password={DbConstants.Password}");
+    return connection;
+});
+
+builder.Services.AddScoped<RedisService>();
 
 builder.Services.AddCors(options =>
 {
@@ -24,9 +34,6 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
-var rep = new Repository();
-rep.PingDatabase();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
