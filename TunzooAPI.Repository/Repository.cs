@@ -1,9 +1,9 @@
 ﻿namespace TunzooAPI.Repository;
 using StackExchange.Redis;
-
+using TunzooAPI.Constants;
 public class Repository
 {
-    static readonly ConnectionMultiplexer _redis = ConnectionMultiplexer.Connect($"{HOST_NAME}:{PORT_NUMBER},password={PASSWORD}");
+    static readonly ConnectionMultiplexer _redis = ConnectionMultiplexer.Connect($"{DbConstants.HostName}:{DbConstants.PortNumber},password={DbConstants.Password}");
 
     public void PingDatabase()
     {

@@ -4,3 +4,4 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 .idea/.idea.TunzooAPI/.idea/
+TunzooAPI.Repository/DbConstants.cs
