@@ -26,8 +26,33 @@ public class RedisService : IRedisService
     }
 
     public string GetLobby(string lobbyId)
-    { 
-        var db = _redis.GetDatabase();
-        return db.HashGet($"lobby:{lobbyId}:metadata", "gameState");
+    {
+        try
+        {
+            var db = _redis.GetDatabase();
+            var result = db.HashGet($"lobby:{lobbyId}:metadata", "gameState");
+        
+            if (result.IsNullOrEmpty)
+            {
+                throw new KeyNotFoundException($"Lobby with ID '{lobbyId}' does not exist or 'gameState' is missing.");
+            }
+
+            return result;
+        }
+        catch (RedisException ex) 
+        {
+            Console.WriteLine($"Redis error occurred: {ex.Message}");
+            return "Error: Unable to fetch game state.";
+        }
+        catch (KeyNotFoundException ex)
+        {
+            Console.WriteLine(ex.Message);
+            return "Error: Lobby or gameState not found.";
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Unexpected error: {ex.Message}");
+            return "Error: An unexpected issue occurred.";
+        }
     }
 }
